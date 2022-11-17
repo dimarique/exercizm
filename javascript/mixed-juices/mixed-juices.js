@@ -18,41 +18,59 @@ function timeToMixJuice(name) {
 	return result;
 }
 
-/**
- * Calculates the number of limes that need to be cut
- * to reach a certain supply.
- *
- * @param {number} wedgesNeeded
- * @param {string[]} limes
- * @returns {number} number of limes cut
- */
 function limesToCut(wedgesNeeded, limes) {
-	while (wedgesNeeded >= 0) {
-		limes.forEach((lime) => {
+	let wedgesCounter = wedgesNeeded;
+	let result = 0;
+	limes.forEach((lime) => {
+		if (wedgesCounter > 0) {
 			switch (lime) {
 				case 'small':
-					wedgesNeeded -= 6;
+					wedgesCounter -= 6;
+					result++;
 					break;
 				case 'medium':
-					wedgesNeeded -= 8;
+					wedgesCounter -= 8;
+					result++;
 					break;
 				case 'large':
-					wedgesNeeded -= 10;
+					wedgesCounter -= 10;
+					result++;
 					break;
 			}
-		});
-	}
-	return wedgesNeeded;
+		}
+	});
+	return result;
 }
 
-/**
- * Determines which juices still need to be prepared after the end of the shift.
- *
- * @param {number} timeLeft
- * @param {string[]} orders
- * @returns {string[]} remaining orders after the time is up
- */
 function remainingOrders(timeLeft, orders) {
-	throw new Error('Please implement the remainingOrders function');
+	let result = 0;
+	const drinks = {
+		'Pure Strawberry Joy': 0.5,
+		Energizer: 1.5,
+		'Green Garden': 1.5,
+		'Tropical Island': 3,
+		'All or Nothing': 5,
+	};
+
+	orders.forEach((order) => {
+		if (result <= timeLeft) {
+			switch (order) {
+				case 'Pure Strawberry Joy':
+					result += 0.5;
+					break;
+				case 'Energizer':
+				case 'Green Garden':
+					result += 1.5;
+					break;
+				case 'Tropical Island':
+					result += 3;
+					break;
+				case 'All or Nothing':
+					result += 5;
+					break;
+			}
+		}
+	});
+	return Object.keys(drinks)[2];
 }
-// export { timeToMixJuice, limesToCut, remainingOrders };
+// export { timeToMixJuice, limesToCut };
