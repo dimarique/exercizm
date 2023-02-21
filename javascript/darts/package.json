@@ -1,5 +1,5 @@
 {
-  "name": "@exercism/javascript-triangle",
+  "name": "@exercism/javascript-darts",
   "description": "Exercism exercises in Javascript.",
   "author": "Katrina Owen",
   "private": true,
@@ -7,7 +7,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/exercism/javascript",
-    "directory": "exercises/practice/triangle"
+    "directory": "exercises/practice/darts"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
